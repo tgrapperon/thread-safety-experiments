@@ -23,4 +23,5 @@ Actor                               554 ns    +499 ns  +904.69 %       x0.10 ±0
 ```
 
 Results obtained with Xcode 13.3b1, Swift 5.6, Release build, on MacOS Monterey 12.2
+
 4Ghz Core i7 4790K, late 2014 iMac Retina 5K, 16 GB 1600 MHz DDR3
