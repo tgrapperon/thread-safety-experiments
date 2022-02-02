@@ -3,7 +3,7 @@ import Foundation
 
 let suite = BenchmarkSuite(name: "Thread Safety Experiments") { suite in
   Thread.current.threadDictionary["thread-safety-experiments"] = 1
-  
+
   var value: Int = 0
 
   let lock = NSRecursiveLock()
@@ -85,8 +85,5 @@ struct Benchmarks {
     Benchmark.main([
       suite
     ])
-    #if DEBUG
-      print("debug")
-    #endif
   }
 }
