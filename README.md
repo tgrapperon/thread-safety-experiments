@@ -1,25 +1,23 @@
 # thread-safety-experiments
 
-An experimentation of various strategies for thread-safe access to some global value, using [swift-measure](https://github.com/tgrapperon/swift-measure)
+An experimentation of various strategies for thread-safe access to some global value, using [swift-benchmark](https://github.com/google/swift-benchmark)
 
 ```
-== Thread Safety Experiments ==================================================================
-                                    Value  Difference Variation  Performance  Error  Iterations
--- Thread Safe Value Access - Get -------------------------------------------------------------
-Direct Access                   (*)  51 ns                                   ±0.24 %    1000000
-Main Thread Check                    55 ns      +5 ns    +9.00 %       x0.92 ±1.07 %    1000000
-Thread.current.threadDictionary     442 ns    +391 ns  +773.77 %       x0.11 ±0.09 %    1000000
-NSRecursiveLock                      81 ns     +30 ns   +59.83 %       x0.63 ±0.17 %    1000000
-@TaskLocal                           62 ns     +12 ns   +23.45 %       x0.81 ±0.18 %    1000000
-Actor                               583 ns    +532 ns +1052.44 %       x0.09 ±0.43 %    1000000
--- Thread Safe Value Access - Set -------------------------------------------------------------
-Direct Access                   (*)  55 ns                                   ±0.19 %    1000000
-Main Thread Check                    62 ns      +7 ns   +11.85 %       x0.89 ±0.22 %    1000000
-Thread.current.threadDictionary     456 ns    +401 ns  +726.31 %       x0.12 ±0.08 %    1000000
-NSRecursiveLock                      88 ns     +33 ns   +59.75 %       x0.63 ±0.15 %    1000000
-@TaskLocal                          263 ns    +208 ns  +376.72 %       x0.21 ±0.11 %    1000000
-Actor                               554 ns    +499 ns  +904.69 %       x0.10 ±0.19 %    1000000
-===============================================================================================
+name                                                           time       std        iterations
+-----------------------------------------------------------------------------------------------
+Thread Safe Value Access - Get.Direct Access                    25.000 ns ± 319.11 %    1000000
+Thread Safe Value Access - Get.Main Thread Check                32.000 ns ± 374.82 %    1000000
+Thread Safe Value Access - Get.Thread.current.threadDictionary 383.000 ns ±  99.03 %    1000000
+Thread Safe Value Access - Get.NSRecursiveLock                  61.000 ns ± 186.22 %    1000000
+Thread Safe Value Access - Get.@TaskLocal                       42.000 ns ± 283.91 %    1000000
+Thread Safe Value Access - Get.Actor                           217.000 ns ± 691.59 %    1000000
+
+Thread Safe Value Access - Set.Direct Access                    26.000 ns ± 436.62 %    1000000
+Thread Safe Value Access - Set.Main Thread Check                31.000 ns ± 794.86 %    1000000
+Thread Safe Value Access - Set.Thread.current.threadDictionary 412.000 ns ± 233.52 %    1000000
+Thread Safe Value Access - Set.NSRecursiveLock                  64.000 ns ± 395.22 %    1000000
+Thread Safe Value Access - Set.@TaskLocal                      214.000 ns ±  83.85 %    1000000
+Thread Safe Value Access - Set.Actor                           195.000 ns ± 410.73 %    1000000
 ```
 
 Results obtained with Xcode 13.3b1, Swift 5.6, Release build, on MacOS Monterey 12.2

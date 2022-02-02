@@ -2,11 +2,20 @@
   "object": {
     "pins": [
       {
-        "package": "swift-measure",
-        "repositoryURL": "https://github.com/tgrapperon/swift-measure",
+        "package": "swift-argument-parser",
+        "repositoryURL": "https://github.com/apple/swift-argument-parser",
+        "state": {
+          "branch": null,
+          "revision": "e394bf350e38cb100b6bc4172834770ede1b7232",
+          "version": "1.0.3"
+        }
+      },
+      {
+        "package": "Benchmark",
+        "repositoryURL": "https://github.com/google/swift-benchmark",
         "state": {
           "branch": "main",
-          "revision": "9b910dcf764ed45d0de0f894d774672e0e463153",
+          "revision": "8163295f6fe82356b0bcf8e1ab991645de17d096",
           "version": null
         }
       }

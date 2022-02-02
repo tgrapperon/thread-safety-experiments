@@ -11,13 +11,13 @@ let package = Package(
       targets: ["thread-safety-experiments"])
   ],
   dependencies: [
-    .package(url: "https://github.com/tgrapperon/swift-measure", .branch("main"))
+    .package(url: "https://github.com/google/swift-benchmark", .branch("main"))
   ],
   targets: [
     .executableTarget(
       name: "thread-safety-experiments",
       dependencies: [
-        .product(name: "Benchmark", package: "swift-measure")
+        .product(name: "Benchmark", package: "swift-benchmark")
       ])
   ]
 )
