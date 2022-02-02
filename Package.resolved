@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "swift-measure",
+        "repositoryURL": "https://github.com/tgrapperon/swift-measure",
+        "state": {
+          "branch": "main",
+          "revision": "9b910dcf764ed45d0de0f894d774672e0e463153",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
