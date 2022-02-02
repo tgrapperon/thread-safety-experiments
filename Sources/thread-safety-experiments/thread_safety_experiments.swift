@@ -1,27 +1,27 @@
 import Benchmark
 import Foundation
 
+var value: Int = 0
+
+let lock = NSRecursiveLock()
+
+struct TaskLocalHost {
+  @TaskLocal static var value: Int = 0
+}
+
+actor Actor {
+  init() {}
+  var value: Int = 0
+  func setValue(value: Int) async {
+    self.value = value
+    return ()
+  }
+}
+
+let theActor = Actor()
+
 let suite = BenchmarkSuite(name: "Thread Safety Experiments") { suite in
   Thread.current.threadDictionary["thread-safety-experiments"] = 1
-
-  var value: Int = 0
-
-  let lock = NSRecursiveLock()
-
-  struct TaskLocalHost {
-    @TaskLocal static var value: Int = 0
-  }
-
-  actor Actor {
-    init() {}
-    var value: Int = 0
-    func setValue(value: Int) async {
-      self.value = value
-      return ()
-    }
-  }
-
-  let theActor = Actor()
 
   suite.addStudy("Thread Safe Value Access - Get") { study in
     study.benchmarkReference("Direct Access") {
